@@ -15,19 +15,23 @@ describe('Login Page', function() {
     //  cy.wrap($li).type('1234')
     
     //with shadow dom plug in shadow type method is working but type is not working
-    //.shadowGet('c-first').shadowFind('lightning-record-form').shadowFind('lightning-record-edit-form').shadowFind('lightning-input-field').shadowFind('lightning-input').shadowFind('input[name="Name"]').shadowType('mukesh')
-    .shadowGet('c-first').shadowFind('lightning-record-form').shadowFind('lightning-record-edit-form').shadowFind('lightning-input-field').shadowFind('lightning-input').shadowFind('input[name="Name"]').type('mukesh')
+    //.shadowGet('c-first').shadowFind('lightning-record-edit-form').shadowFind('lightning-input-field').shadowFind('lightning-input').shadowFind('input[name="Name"]').shadowType('mukesh')
+   .shadowGet('c-first').shadowFind('lightning-record-edit-form').shadowFind('lightning-input-field').shadowFind('lightning-input').shadowFind('input[name="Name"]').type('mukesh')
     
-    //Able to click drop down but unable to select option
+    //Getting complete this field error on clicking of submit even if text area field is populated
     cy.shadowGet('c-first')
-    .shadowFind('lightning-record-form')
+   
     .shadowFind('lightning-record-edit-form')
     .shadowFind('lightning-input-field')
-    .shadowFind('lightning-picklist')
-    .shadowFind('lightning-combobox')
-    .shadowFind('lightning-base-combobox')
-    .shadowFind('input[name="Type"]')
-  .shadowClick()
+    .shadowFind('lightning-textarea')
+    .shadowFind('textarea[name="Description"]')
+    .shadowType("Description")
+
+    cy.shadowGet('c-first')
+    .shadowFind('lightning-record-edit-form')
+    .shadowFind('lightning-button')
+    .shadowFind('button[type="submit"]')
+    .shadowClick()
 
   })
 
